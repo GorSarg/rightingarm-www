@@ -36,3 +36,15 @@ have changed before.
 
 `index.html` is hand-written, no build. The design lives in the `:root` custom properties at
 the top: `--paper`, `--ink`, `--navy` (sampled from the logo), `--brass`, `--hairline`.
+
+The countdown and the watchlist are at the foot of the file, in the one `<script>`.
+Two constants at the top of it decide where a watchlist address goes:
+
+| Constant   | Effect                                                                |
+|------------|-----------------------------------------------------------------------|
+| `ENDPOINT` | Anything that takes a JSON `POST` and answers 2xx. Preferred.          |
+| `MAILBOX`  | Fallback when `ENDPOINT` is empty — opens the visitor's own mail app.  |
+
+With **both empty the form does not render at all**. That is deliberate: a field that
+accepts an address and drops it is worse than no field. The countdown is independent of
+both and always shows.
