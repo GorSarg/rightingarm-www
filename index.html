@@ -352,8 +352,12 @@
    * worse than no form. With BOTH empty the form never appears at all --
    * deliberately, for the same reason.
    * ------------------------------------------------------------------ */
-  var ENDPOINT = "";
-  var MAILBOX  = "gor.sargsyan@rightingarm.com";
+  var ENDPOINT = "https://watchlist.rightingarm.com/";
+  // EMPTY NOW THAT `ENDPOINT` IS SET, and emptied deliberately rather than left as a
+  // fallback. The mailto branch is unreachable while ENDPOINT is set, so keeping an
+  // address here would publish a real mailbox in a public repository on a page built to
+  // attract attention, and buy nothing for it. Put one back only if the collector goes.
+  var MAILBOX  = "";
 
   /* What the page says back to somebody who has just handed over an address.
      THANKS is for the POST, which we know landed. HANDOFF is for the mailto,
