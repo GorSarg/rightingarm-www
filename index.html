@@ -164,8 +164,11 @@
     margin: 0;
     font-family: var(--utility);
     font-weight: 400;
-    font-size: clamp(13px, 1.55vw, 16px);
-    letter-spacing: 0.14em;
+    /* Sized to read as the second thing on the page, after the mark. It started a third of
+       this and sat under the tagline like a caption; the date is the reason anyone is here
+       before there is a product to show them, so it carries weight. */
+    font-size: clamp(22px, 3.2vw, 34px);
+    letter-spacing: 0.1em;
     color: var(--navy);
     font-variant-numeric: tabular-nums lining-nums;
   }
@@ -188,11 +191,16 @@
     color: var(--quiet);
     /* letter-spacing is trailing space, so it lands between the last digit and
        its unit. Pull the letter back onto the number it belongs to. */
-    margin-left: -0.09em;
+    margin-left: -0.06em;
+    /* Held back as the line grew: at 34px the unit letters read as loud as the figures, and
+       the figures are the information. Proportional, so this holds at every clamp step. */
+    font-size: 0.62em;
   }
 
+  .tally-tail { font-size: 0.62em; }
+
   .tally-tail {
-    margin-left: 0.7em;
+    margin-left: 0.9em;
     color: var(--quiet);
   }
 
