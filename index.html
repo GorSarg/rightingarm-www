@@ -271,6 +271,18 @@
     color: var(--quiet);
   }
 
+  .watch-hint {
+    flex-basis: 100%;
+    margin: 2px auto 0;
+    font-family: var(--utility);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+    text-align: center;
+    text-wrap: balance;
+    color: var(--quiet);
+  }
+
   /* Reachable by a screen reader, absent from the layout. */
   .sr {
     position: absolute;
@@ -321,6 +333,11 @@
     </div>
     <button type="submit">Notify me</button>
     <p class="watch-note" role="status" hidden></p>
+    <!-- What the control actually does. "Notify me" alone names an action and not its
+         subject, which is a fair thing to hesitate over before handing an address to a page
+         that has not launched. Replaced by the reply once there is one, so the space under
+         the form holds one line rather than two. -->
+    <p class="watch-hint">Be here from the first day. One email when it opens, and nothing else.</p>
   </form>
 </main>
 
@@ -423,9 +440,15 @@
   var button = form.querySelector("button");
   var note   = form.querySelector(".watch-note");
 
+  var hint = form.querySelector(".watch-hint");
+
   function say(text) {
     note.textContent = text;
     note.hidden = !text;
+    // ONE LINE UNDER THE FORM AT A TIME. The hint explains the button; once there is
+    // something to report the report is what matters, and stacking the two reads as an
+    // error message with sales copy underneath it.
+    if (hint) { hint.hidden = Boolean(text); }
   }
 
   function send(address) {
